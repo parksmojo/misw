@@ -26,7 +26,7 @@ func Init() error {
       start_time TIMESTAMPTZ DEFAULT now(),
       end_time TIMESTAMPTZ,
       moves_count INTEGER DEFAULT 0,
-      values TEXT[] NOT NULL,
+      values INTEGER[][] NOT NULL,
       board TEXT[][] NOT NULL,
       won BOOLEAN DEFAULT FALSE
     );

@@ -37,7 +37,7 @@ func main() {
 		// GET /user for user info retrieval
 
 	// "/game" for game creation, retrieval, and moves
-		// POST /game for game creation
+	handle("/game", "PUT", endpoints.NewGameHandler)
 		// GET /game for game retrieval
 		// POST /game for making a move in a game
 
