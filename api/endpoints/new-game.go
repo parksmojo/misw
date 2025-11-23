@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"math/rand"
+	"misw-api/auth"
 	"misw-api/db"
 	"misw-api/model"
 	"net/http"
@@ -25,6 +26,11 @@ func NewGameHandler(w http.ResponseWriter, r *http.Request) {
 	conn := db.OpenConnection()
 	defer db.CloseConnection(conn)
 
+	user := auth.ValidateRequestingUser(w, r, conn)
+	if user == nil {
+		return
+	}
+
 	var body newGameRequest
 	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
@@ -36,7 +42,6 @@ func NewGameHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// generate possible bomb locations
 	possibleLocations := make([]model.Coord, 0, body.Width*body.Height)
 	for i := 0; i < body.Height; i++ {
 		for j := 0; j < body.Width; j++ {
@@ -86,7 +91,7 @@ func NewGameHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	gameId, err := db.CreateGame(conn, 0, values, board)
+	gameId, err := db.CreateGame(conn, user.ID, values, board)
 	if err != nil {
 		fmt.Println("Error creating game:", err)
 		http.Error(w, "Could not create game", http.StatusInternalServerError)
