@@ -7,5 +7,9 @@
 | 11/15 | 3     | Implement object models and game creation endpoint   |
 | 11/18 | 3.5   | Finish game db methods and endpoints                 |
 | 11/22 | 3     | Implement user db methods, auth, and endpoints       |
+| 11/25 | 2     | Research and learn Rust                              |
+| 11/26 | 2     | Implement api layer for cli                          |
+| 11/29 | 1.5   | Make cli function loop and functionality             |
+| 12/2  | 1     | Testing and polishing                                |
 
-Total hours: `16.5`
+Total hours: `23`

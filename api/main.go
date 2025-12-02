@@ -37,6 +37,7 @@ func main() {
 	handle("/game", "PUT", endpoints.NewGameHandler)
 	handle("/game", "GET", endpoints.GetGameHandler)
 	handle("/game", "POST", endpoints.MakeMoveHandler)
+	handle("/games", "GET", endpoints.GetUnfinishedGamesHandler)
 
 	fmt.Printf("Server is running on port %s\n", PORT)
 	log.Fatal(http.ListenAndServe(":"+PORT, nil))
