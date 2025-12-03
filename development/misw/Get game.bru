@@ -1,0 +1,22 @@
+meta {
+  name: Get game
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8321/game
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": 4
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

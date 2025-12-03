@@ -1,0 +1,14 @@
+services:
+  misw-db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: misw
+      POSTGRES_PASSWORD: misw_password
+      POSTGRES_DB: misw
+    volumes:
+      - misw:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  misw:
